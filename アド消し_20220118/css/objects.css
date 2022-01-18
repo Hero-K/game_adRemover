@@ -1,0 +1,267 @@
+/* objects.css ANIMATION */
+
+/* フェードイン */
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* 透明 */
+  }
+  100% {
+    opacity: 1; /* 不透明 */
+  }
+}
+
+/* スライドダウン */
+@keyframes slideDown {
+  0% {
+    opacity: 0; /* 透明 */
+    transform: translateY(-150px);
+  }
+  100% {
+    opacity: 1; /* 不透明 */
+    transform: translateY(0px);
+  }
+}
+
+/* スライドアップ */
+@keyframes slideUp {
+  0% {
+    opacity: 0; /* 透明 */
+    transform: translateY(150px);
+  }
+  100% {
+    opacity: 1; /* 不透明 */
+    transform: translateY(0px);
+  }
+}
+
+/* ここからオブジェクト */
+/* 真ん中 */
+#object0 {
+  display: inline-block;
+  position: relative;
+  top: 10rem;
+  width: 80%;
+  max-width: 330px;
+  /* 下余白をどうにかしたいね */
+  /* スライドダウン */
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  transition: ease-out 3s;
+}
+#object0 img {
+    width: 100%;
+}
+#object0 button {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  line-height: 13px;
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  background: #f33;
+}
+/* スライド下 */
+#object1 {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  background-color: #05050555;
+  font-size: 0; /* <a>下部の謎の余白の対処法 */
+  /* スライドダウン */
+  animation-name: slideDown;
+  animation-duration: 3s;
+  transition: ease-out 3s;
+}
+#object1 img,
+#object2 img {
+  width: 100%;
+  max-width: 500px;
+}
+#object1 button {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  line-height: 13px;
+  width: 16px;
+  height: 16px;
+  color: #eee;
+  background: #f33;
+}
+/* スライド上 */
+#object2 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #05050555;
+  font-size: 0; /* <a>下部の謎の余白の対処法 */
+  /* スライドアップ */
+  animation-name: slideUp;
+  animation-duration: 3s;
+  transition: ease-out 3s;
+}
+#object2 img {
+    /* width: 100%;
+    max-width: 960px; */
+}
+#object2 button {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  line-height: 13px;
+  width: 16px;
+  height: 16px;
+  color: #eee;
+  background: #f33;
+}
+/* SNSｱｲｺﾝ */
+#object3 {
+  display: inline-block;
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  width: 120px;
+  height: 120px;
+}
+#object3 img {
+  position: absolute;
+  width: inherit;
+  height: auto;
+  top: 0;
+  bottom: 90px;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  /* フェードイン */
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  transition: ease-out 1s;
+}
+#object3 button {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  line-height: 13px;
+  width: 16px;
+  height: 16px;
+  color: #eee;
+  background: #f33;
+}
+/* 背景で覆い隠すやつ */
+.object-wrapper {
+  display: flex;
+  background-color: #050505b3;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+  justify-content: center; /*コンテナ内の個別アイテムの横方向の揃え位置を指定する*/
+  align-items: center; /*コンテナ内の個別アイテムの縦方向の揃え位置を指定する */
+}
+#object4 {
+  width: 80%;
+  max-width: 330px;
+}
+#object4 img {
+  display: inline-block;
+  position: relative;
+  z-index: 6;
+  width: 100%;
+}
+#object4 button {
+  margin: 10px;
+  display: inline-block;
+  position: relative;
+  top: 0px;
+  right: 0px;
+  width: 60%;
+  height: 5%;
+  color: #eee;
+  background: #f33;
+  border-radius: 15px;
+}
+
+
+/* ゲームオーバーのシャッター */
+@keyframes poyoyon {
+  0% {
+    transform: translateY(-140px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateY(0);
+  }
+  65% {
+    transform: translateY(-10px);
+  }
+  /* 90% {
+    transform: translateY(0);
+  } */
+  90% {
+    transform: translateY(0);
+  }
+  20%,100% {
+    opacity: 1;
+  }
+}
+#gameover-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  background-color: #050505b3;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+  justify-content: center; /*コンテナ内の個別アイテムの横方向の揃え位置を指定する*/
+  align-items: center; /*コンテナ内の個別アイテムの縦方向の揃え位置を指定する */
+  color: #fff;
+  text-align: center;
+  font-weight: lighter;
+  text-decoration: none;
+}
+#gameover-wrapper h3 {
+  width: 100%;
+  font-size: 3rem;
+    animation: poyoyon 0.6s cubic-bezier(0.12, 0, 0.39, 0) 1 forwards;
+}
+#gameover-wrapper h4 {
+  margin-top: 2rem;
+  width: 100%;
+  color: #e1e1e1;
+  opacity: 0;
+  animation: fadeIn .6s forwards;
+  animation-delay: 1s;
+}
+.disabled {
+  pointer-events: none; /* クリック禁止クラス */
+}
+
+/* 細かい仕様 */
+.xbtn {
+  /* cursor: default; */
+  font-family: sans-serif;
+  font-size: medium;
+}
+
+button:focus,
+form input:focus {
+  outline: none;
+}
