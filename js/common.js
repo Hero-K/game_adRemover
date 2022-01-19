@@ -196,7 +196,6 @@ const resultWrapper = document.querySelector('#result-wrapper');
 const scoreResult = document.querySelector('#score-result');
 const passSecResult = document.querySelector('#passsec-result');
 const finalResult = document.querySelector('#final-result');
-// const rank = document.querySelector('#rank');
 
 // 記録
 function result() {
@@ -243,10 +242,6 @@ function retry() {
       }
     }
   }
-
-  // // 称号
-  // rank.style.fontFamily= 'sans-serif'; // フォントを戻す
-  // rank.style.color= '#fff'; // 文字色を戻す
 
   // スコア初期化
   Score = 0;
