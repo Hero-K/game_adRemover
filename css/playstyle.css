@@ -142,6 +142,10 @@ h2::after {
   max-width: 200px;
   width: 100%;
 }
+#ready p {
+  font-size: 0.75rem;
+  letter-spacing: 0.25rem;
+}
 .start__description {
   padding: 0 1rem;
   width: 100%;
