@@ -1,6 +1,8 @@
 /* DOCUMENTS javascript */
 'use strict';
 
+
+
 /* オブジェクト 
 ***************************************************************/
 // フラグ
@@ -205,6 +207,8 @@ function result() {
   
   const FinalScore = Math.floor(Score / msg);
 
+  document.forms[0].score.value = FinalScore; // フォームに
+
     // カウントアップ
     let increment = 10;
     const timerId = setInterval( () => {
@@ -222,7 +226,6 @@ function result() {
 
   // finalResult.innerHTML = FinalScore;
 }
-console.log(finalResult.textContent);
 
 function retry() {
   // オブジェクトのお掃除
