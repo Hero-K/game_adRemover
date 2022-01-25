@@ -1,6 +1,8 @@
 /* DOCUMENTS javascript */
 'use strict';
 
+
+
 /* オブジェクト 
 ***************************************************************/
 // フラグ
@@ -196,7 +198,6 @@ const resultWrapper = document.querySelector('#result-wrapper');
 const scoreResult = document.querySelector('#score-result');
 const passSecResult = document.querySelector('#passsec-result');
 const finalResult = document.querySelector('#final-result');
-// const rank = document.querySelector('#rank');
 
 // 記録
 function result() {
@@ -205,6 +206,8 @@ function result() {
   passSecResult.innerHTML = msg; // 経過時間をそのまま持ってきた
   
   const FinalScore = Math.floor(Score / msg);
+
+  document.forms[0].score.value = FinalScore; // フォームに
 
     // カウントアップ
     let increment = 10;
@@ -223,7 +226,6 @@ function result() {
 
   // finalResult.innerHTML = FinalScore;
 }
-console.log(finalResult.textContent);
 
 function retry() {
   // オブジェクトのお掃除
@@ -243,10 +245,6 @@ function retry() {
       }
     }
   }
-
-  // // 称号
-  // rank.style.fontFamily= 'sans-serif'; // フォントを戻す
-  // rank.style.color= '#fff'; // 文字色を戻す
 
   // スコア初期化
   Score = 0;
