@@ -9,36 +9,54 @@
 let flags = Array(5); // 生成時の要素重複を回避するためのフラグ
 flags.fill('false');
 
-// 画像フォルダ
-const images = [
-  ['<img src="./images/makura320.jpg" alt="OBJECT0">',
-  '<img src="./images/sumoo.jpg" alt="OBJECT0">',
-  '<img src="./images/colona320.jpg" alt="OBJECT0">'],
-
-  ['<img src="./images/broom.jpg" alt="OBJECT1">'
-  ,'<img src="./images/grano.jpg" alt="OBJECT1">',
-  '<img src="./images/colonaa.jpg" alt="OBJECT1">'],
-
-  ['<img src="./images/colonaa.jpg" alt="OBJECT2">',
-  '<img src="./images/jazzkitten.jpg" alt="OBJECT2">',
-  '<img src="./images/makura.gif" alt="OBJECT2">'],
-
-  ['<img src="./images/jine.png" alt="OBJECT3">',
-  '<img src="./images/zkype.png" alt="OBJECT3">',
-  '<img src="./images/puitter.png" alt="OBJECT3">'],
-
-  ['<img src="./images/youare.gif" alt="OBJECT4" width="400px" height="auto">',
-  '<img src="./images/grano320.jpg" alt="OBJECT4">',
-  '<img src="./images/makura320.jpg" alt="OBJECT4">']
+const imageObject = [
+  {
+    src: [
+      './images/makura320.jpg',
+      './images/sumoo.jpg',
+      './images/colona320.jpg'
+    ],
+    alt: 'Object0',
+  },
+  {
+    src: [
+      './images/broom.jpg',
+      './images/grano.jpg',
+      './images/colonaa.jpg'
+    ],
+    alt: 'Object1',
+  },
+  {
+    src: [
+      './images/colonaa.jpg',
+      './images/jazzkitten.jpg',
+      './images/makura.gif'
+    ],
+    alt: 'Object2',
+  },
+  {
+    src: [
+      './images/jine.png',
+      './images/zkype.png',
+      './images/puitter.png'
+    ],
+    alt: 'Object3',
+  },
+  {
+    src: [
+      './images/youare.gif',
+      './images/grano320.jpg',
+      './images/makura320.jpg'
+    ],
+    alt: 'Object4',
+  },
 ];
 
 
 
 const startWrapper = document.querySelector('#start-wrapper');
-
 const startButton = document.querySelector('#start-button');
 startButton.addEventListener('click', countdown); // スタートボタン
-
 const retryButton = document.querySelector('#retry-button');
 retryButton.addEventListener('click', retry); // リトライボタン
 
@@ -48,6 +66,7 @@ retryButton.addEventListener('click', retry); // リトライボタン
 *****************************************************************/
 const passageArea = document.querySelector('#passage-area');
 
+const difficulity = [400, 300, 100]; // 難易度別広告発生率
 let PassSec;    // 秒数カウント用変数
 let PassageID;  // タイマー関数格納用
 let PassagePop; // オブジェクトの周期生成用
@@ -58,7 +77,7 @@ let count = 3;  // (カウントダウン)
 function startShowing() {
   PassSec = 0;   // カウンタのリセット
   PassageID = setInterval('showPassage()',10); // タイマーをセット(10ms間隔)
-  PassagePop = setInterval('randobject()',100); // ランダム生成の開始
+  PassagePop = setInterval('randobject()', difficulity[document.querySelector('#difficulity').selectedIndex]); // ランダム抽選 (難易度で抽選間隔が変わる)
 }
 // 繰り返し処理の中止
 function stopShowing() {
@@ -102,20 +121,15 @@ function countdown() {
 ***************************************************************/
 const scoreArea = document.querySelector('#score-area');
 let Score = 0;  // スコア
-let randobj;    // オブジェクトランダム抽選用変数
-let randimg;    // 画像ランダム抽選用変数
-
 
 // 周期生成
 // ランダム抽選
 function randobject() {
-   randobj = Math.floor(Math.random() * 20); // オブジェクト抽選
-   // randobj = 0; // 試運転用
+  const randobj = Math.floor(Math.random() * 20); // オブジェクト抽選
 
   if( flags[ randobj ] == 'false') // オブジェクトが表示されてなかったら生成
   {
-    const randimg = Math.floor(Math.random() * 3); // 画像抽選
-    objectready( randobj, randimg ); // オブジェクト生成準備
+    objectready(randobj); // オブジェクト生成準備
     flags[ randobj ] = 'true'; // フラグを立てる(オブジェクト表示済)
     
     // console.log(randobj + " → " + flags[ randobj ]);
@@ -124,13 +138,20 @@ function randobject() {
 
 
 // 生成
-function objectready( popid, popsrc ) {
+function objectready(popid) {  
+  const imageSrc = imageObject[popid].src[Math.floor(Math.random() * imageObject[popid].src.length)];
+  const imageAlt = imageObject[popid].alt;
+
   const ID = "object" + popid; // クラス名の型で次の処理を楽に
+
   const div = document.createElement('div'); // divの型を用意
   div.id = ID; // ランダムに得たidを付与
+
+  const aimg = (document.createElement('a'));
+
+  // ↓imageObject 
+  aimg.innerHTML = `<img src="${imageSrc}" alt="${imageAlt}">`; // div内に画像を入れる
   
-  const aimg = document.createElement('a');
-  aimg.innerHTML = images[popid][popsrc]; // div内に画像を入れる
   const btn = document.createElement('button'); // ボタン型の用意
   btn.id = popid;
   btn.type = 'button';
@@ -139,7 +160,6 @@ function objectready( popid, popsrc ) {
 
   // 個別の要素設定
   const simulator = document.querySelector('#simulator');
-
   switch(popid) {
     case 4:
       const div2 = document.createElement('div');
