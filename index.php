@@ -1,5 +1,5 @@
 <?php
-$pdo = require_once 'connect.php';
+// $pdo = require_once 'connect.php';
 ?>
 
 <!DOCTYPE html>
