@@ -1,0 +1,405 @@
+@charset "UTF-8";
+
+/* CSS RESET */
+@import url("ress.css");
+
+/* ANIMATION */
+@keyframes countDown {
+	0%,100% {opacity:0;}
+	30% {opacity:1;}
+}
+img {
+  /* pointer-events: none; */
+  /* ドラッグさせたくないけど判定もきえちゃうなー */
+}
+body {
+  color: #fff;
+  font-size: 100%; /* 1rem = 16px */
+  background: #000;
+  font-family: 'M PLUS 1', sans-serif;
+}
+h2 {
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+  padding: 0 5%;
+  color: #fdbc42;
+  line-height: 0.7;
+  text-shadow: 
+  1px 1px 0 #fff,
+  -1px 1px 0 #fff,
+  1px -1px 0 #fff,
+  -1px -1px 0 #fff;
+  letter-spacing: 0.2rem;
+}
+h2::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left,#fff0,#fffe, #fff0);
+}
+
+.parameter {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  max-width: 960px;
+  background-color: #333;
+}
+/* .parameter h1 {
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  font-family: cursive;
+} */
+.parameter dl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-top: 25px;
+  width: 100%;
+}
+.parameter dt {
+  text-align: left;
+  font-size: 3.6rem;
+  font-weight: bold;
+}
+.parameter dd {
+  text-align: right;
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+/* プレイ画面 */
+#simulator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  text-align: center;
+}
+/* #simulator div {
+  font-size: 0; 
+  <a>下部の謎の余白の対処法
+} */
+
+#start-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.6) ;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(3px);
+}
+#start {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+  position: relative;
+  /* margin: 30px; */
+  text-align: center; /* javascのカウントダウンの */
+  width: 100%;
+  height: 100%;
+  line-height: 1.7;
+  animation: fadeIn .5s;
+}
+#ready {
+  display: block;
+  width: 100%;
+  cursor: default;
+}
+#start h2 {
+  font-size: 3rem;
+  width: 100%;
+}
+#ready img {
+  max-width: 200px;
+  width: 100%;
+}
+.start__description {
+  padding: 0 1rem;
+  width: 100%;
+}
+/* .start__description img {
+  display: block;
+  margin: 16px auto 24px;
+  width: 100%;
+  max-width: 360px;
+} */
+#object-sample {
+  display: block;
+  position: relative;
+  top: 0;
+  margin: 0.5rem auto;
+  width: 80%;
+  max-width: 240px;
+  /* 下余白をどうにかしたいね */
+  /* スライドダウン */
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  transition: ease-out 3s;
+}
+#object-sample img {
+  width: 100%;
+}
+#object-sample button {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  line-height: 13px;
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  background: #f33;
+  transition: .2s;
+}
+#object-sample button:hover {
+  background: #f55;
+}
+
+#countdown-wrapper {
+  font-size: 3.75rem;
+  font-family: fantasy;
+  animation: 1s countDown infinite;
+}
+/* スタートボタン */
+.start-button-wrapper {
+  align-self: flex-start;
+  width: 100%;
+  text-align: center;
+}
+#start-button {
+  padding: 15px;
+  width: 100%;
+  max-width: 270px;
+  color: #fdbc42;
+  font-size: 1.25rem;
+  font-family: sans-serif;
+  letter-spacing: .2rem;
+  background-color: #333;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  /* padding: 15px;
+  min-width: 270px; */
+}
+#start-button:hover {
+  background-color: #444;
+}
+
+/* リザルト画面 */
+#result-wrapper {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  max-width: 960px;
+  text-align: center;
+  background: rgba(0, 0, 0, .6);
+  backdrop-filter: blur(3px);
+}
+.result {
+  width: 100%;
+  max-width: 640px;
+  margin: auto;
+  animation: fadeIn .5s ease-out;
+}
+.result h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+}
+.resultsheet {
+  margin-top: 32px;
+  color: #e1e1e1;
+  font-family: 'Hind', sans-serif;
+  line-height: 1.25;
+}
+.result__column {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 auto;
+  width: 72%;
+  border-bottom: solid 5px #e1e1e1;
+}
+.resultsheet dl {
+  display: inline-block;
+  letter-spacing: .2rem;
+}
+.resultsheet dt {
+  font-size: 1.275rem;
+}
+.resultsheet dd {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.result__column span {
+  font-size: 2.5rem;
+}
+.result__column-final {
+  width: 100%;
+  margin-top: 48px;
+  text-align: center;
+  /* white-space: nowrap; */
+}
+#final-result {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 6rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+}
+#final-result::after {
+  content: " pt/sec";
+  display: inline;
+  font-size: 1.5rem;
+  font-weight: normal;
+  letter-spacing: 0.1rem;
+}
+
+.rank {
+  margin: auto;
+  margin-top: 32px;
+  width: 100%;
+  max-width: 360px;
+}
+.rank h3 {
+  color: #ddd;
+  text-align: left;
+}
+#rank {
+  font-weight: bold;
+  color: #fff;
+  font-size: 2.5rem;
+  font-family: sans-serif;
+}
+
+.score-form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.score-form {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  width: 72%;
+}
+#form-name {
+  padding: 0 8px;
+  height: 2.5rem;
+  background-color: #fff5;
+  color: #fff;
+  line-height: 1;
+  border-radius: 4px;
+  flex-grow: 1; /* 横に伸ばす */
+}
+::placeholder {
+  color: #fffa;
+}
+#form-submit {
+  display: inline-block;
+  color: #fdbc42;
+  height: 2.5rem;
+  background-color: #000;
+  box-shadow: 0 0 2px #fffa;
+  border-radius: 4px;
+  transition: .2s;
+}
+#form-submit img {
+  height: 100%;
+}
+#form-submit:hover {
+  background: #222;
+}
+
+.result__menu {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-around;
+  margin: 24px auto 0;
+  padding: auto;
+}
+.result__menu button {
+  margin: 16px 2% 0;
+  padding: 12px;
+  width: 40%;
+  min-width: 270px;
+  font-size: 1.25rem;
+  font-family: sans-serif;
+  color: #e1e1e1;
+  font-weight: bolder;
+  letter-spacing: .2rem;
+  background: #333;
+  border-radius: 10px;
+  transition: .3s;
+  overflow: hidden;
+}
+.result__menu button:hover {
+  background: #444;
+}
+#retry-button {
+  color: #fdbc42;
+}
+
+
+
+@media screen and (max-width: 480px) {
+  #start h2 {
+    font-size: 2.5rem;
+  }
+  #result-wrapper h2 {
+    font-size: 3rem;
+  }
+  .resultsheet dt {
+    font-size: 1rem;
+  }
+  .resultsheet dd {
+    font-size: 2rem;
+  }
+  #result-wrapper span {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 379px) {
+  #ready img {
+    /* max-width: 75%; */
+  }
+}
