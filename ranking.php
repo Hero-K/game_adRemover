@@ -22,8 +22,8 @@ $sql = "SELECT * FROM `rank` WHERE(ranker_name, ranker_score) VALUES('', :ranker
   <body>
       <div class="wrapper">
         <header class="header">
-          <h1 class="header__logo"><img src="images/logo.png" alt="">
-          <p>広告をひたすら消すシミュレーション</p></h1>
+          <h1 class="header__logo"><img src="images/logo.png" alt="アド消ック天国 広告をひたすら消すシミュレーション">
+          <p>アド消ック天国 広告をひたすら消すシミュレーション</p></h1>
         </header>
         <h2>RANKING</h2>
           <table class="ranking">

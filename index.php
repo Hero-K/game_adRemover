@@ -44,12 +44,17 @@ $pdo = require_once 'connect.php';
                   <p>広告をひたすら消すシミュレーション</p></h1>
                 <div class="start__middle">
                   <h2>GAME PLAY</h2>
-                  <div id="object-sample">
+                  <!-- <div id="object-sample">
                     <a>
                       <img src="./images/makura320.jpg" alt="真ん中">
                     </a>
                     <button id="0" type="button" class="xbtn">×</button>
-                  </div>
+                  </div> -->
+                  <select id="difficulity">
+                    <option value="0">EASY</option>
+                    <option value="1" selected>NORMAL</option>
+                    <option value="2">HARD</option>
+                  </select>
                   <p class="start__description">
                     <!-- <img src="images/howto_img.png"> -->
                     しつこく出てくる広告を出来るだけ素早く消していこう!!
@@ -92,7 +97,7 @@ $pdo = require_once 'connect.php';
             </div>
 
             <div class="score-form-wrapper">
-              <form class="score-form" action="rank_in.php">
+              <form class="score-form" action="rank_in.php" method="post">
                 <input  type="hidden" name="score" value="0">
                 <input id="form-name" type="text" name="name" placeholder="名前を付けてランキングに登録">
                 <button id="form-submit" type="submit"><img src="images/submit.svg" alt="送信"></button>

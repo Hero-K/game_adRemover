@@ -32,6 +32,50 @@ const images = [
   '<img src="./images/makura320.jpg" alt="OBJECT4">']
 ];
 
+// const imageObject = [
+//   {
+//     src: [
+//       './images/makura320.jpg',
+//       './images/sumoo.jpg',
+//       './images/colona.jpg',
+//     ],
+//     alt: 'Object0',
+//   },
+//   {
+//     src: [
+//       './images/makura320.jpg',
+//       './images/makura320.jpg',
+//       './images/makura320.jpg',
+//     ],
+//     alt: 'Object1',
+//   },
+//   {
+//     src: [
+//       './images/makura320.jpg',
+//       './images/makura320.jpg',
+//       './images/makura320.jpg',
+//     ],
+//     alt: 'Object2',
+//   },
+//   {
+//     src: [
+//       './images/makura320.jpg',
+//       './images/makura320.jpg',
+//       './images/makura320.jpg',
+//     ],
+//     alt: 'Object3',
+//   },
+//   {
+//     src: [
+//       './images/makura320.jpg',
+//       './images/makura320.jpg',
+//       './images/makura320.jpg',
+//     ],
+//     alt: 'Object4',
+//   },
+// ];
+// console.log(imageObject);
+
 
 
 const startWrapper = document.querySelector('#start-wrapper');
@@ -48,6 +92,7 @@ retryButton.addEventListener('click', retry); // リトライボタン
 *****************************************************************/
 const passageArea = document.querySelector('#passage-area');
 
+const difficulity = [400, 300, 100]; // 難易度別広告発生率
 let PassSec;    // 秒数カウント用変数
 let PassageID;  // タイマー関数格納用
 let PassagePop; // オブジェクトの周期生成用
@@ -58,7 +103,7 @@ let count = 3;  // (カウントダウン)
 function startShowing() {
   PassSec = 0;   // カウンタのリセット
   PassageID = setInterval('showPassage()',10); // タイマーをセット(10ms間隔)
-  PassagePop = setInterval('randobject()',100); // ランダム生成の開始
+  PassagePop = setInterval('randobject()', difficulity[document.querySelector('#difficulity').selectedIndex]); // ランダム抽選 (難易度で抽選間隔が変わる)
 }
 // 繰り返し処理の中止
 function stopShowing() {
@@ -105,12 +150,10 @@ let Score = 0;  // スコア
 let randobj;    // オブジェクトランダム抽選用変数
 let randimg;    // 画像ランダム抽選用変数
 
-
 // 周期生成
 // ランダム抽選
 function randobject() {
    randobj = Math.floor(Math.random() * 20); // オブジェクト抽選
-   // randobj = 0; // 試運転用
 
   if( flags[ randobj ] == 'false') // オブジェクトが表示されてなかったら生成
   {
@@ -128,9 +171,12 @@ function objectready( popid, popsrc ) {
   const ID = "object" + popid; // クラス名の型で次の処理を楽に
   const div = document.createElement('div'); // divの型を用意
   div.id = ID; // ランダムに得たidを付与
-  
+
   const aimg = document.createElement('a');
+
+  // ↓imageObject 
   aimg.innerHTML = images[popid][popsrc]; // div内に画像を入れる
+  
   const btn = document.createElement('button'); // ボタン型の用意
   btn.id = popid;
   btn.type = 'button';
