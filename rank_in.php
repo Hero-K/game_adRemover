@@ -7,8 +7,8 @@ var_dump($pdo);
 
 $data = [
     // ':rankerID' => "",
-    ':rankerName' => "John",
-    ':rankerScore' => "400"
+    ':rankerName' => $_POST['name'],
+    ':rankerScore' => $_POST['score']
 ];
 
 $sql = "INSERT INTO `rank` (rank_id, ranker_name, ranker_score) VALUES('', :rankerName, :rankerScore)";
