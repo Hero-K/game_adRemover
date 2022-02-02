@@ -1,7 +1,6 @@
 <?php
 
 $pdo = require "connect.php";
-var_dump($pdo);
 $sql = "SELECT * FROM `rank` ORDER BY ranker_score DESC LIMIT 5";
 
 $stmt = $pdo->query($sql);
