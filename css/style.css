@@ -18,6 +18,10 @@ body {
     width: 100%;
     text-align: center;
 }
+.header__logo p {
+    font-size: 0.5rem;
+    letter-spacing: 0.1rem;
+}
 .header__logo img {
     margin-top: 12px;
     width: 80%;

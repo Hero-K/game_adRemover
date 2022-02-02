@@ -62,6 +62,7 @@
                 </div>
                 <div class="start-button-wrapper">
                   <button type="button" id="start-button">スタート</button>
+                  <!-- <button type="button" id="start-button"><a href="ranking.php">ランキング</a></button> -->
                 </div>
             </div>
           </div>

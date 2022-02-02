@@ -11,6 +11,10 @@
 img {
   /* pointer-events: none; */
   /* ドラッグさせたくないけど判定もきえちゃうなー */
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
 }
 
 body {
@@ -418,8 +422,13 @@ h2::after {
   border-radius: 10px;
   text-align: center;
   font-size: 24px;
-  margin: 20px auto;
+  margin: 36px auto;
 }
+#difficulity option {
+  color: #fff;
+  background-color: #111;
+}
+
 .start__middle h2 {
   animation: move 1s infinite;
 }
