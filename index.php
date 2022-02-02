@@ -57,7 +57,7 @@
                   </select>
                   <p class="start__description">
                     <!-- <img src="images/howto_img.png"> -->
-                    しつこく出てくる広告を出来るだけ素早く消していこう!!
+                    しつこく出てくる広告を、出来るだけ素早く消せ!!
                   </p>
                 </div>
                 <div class="start-button-wrapper">
