@@ -31,6 +31,7 @@ if ($rankers) {
     <title>アド消ック天国 広告をひたすら消すシミュレーション</title>
   </head>
   <body>
+<<<<<<< HEAD
     <div class="wrapper">
       <header class="header">
         <h1 class="header__logo">
@@ -65,5 +66,38 @@ if ($rankers) {
         </tbody>
       </table>
     </div>
+=======
+      <div class="wrapper">
+        <header class="header">
+          <h1 class="header__logo"><img src="images/logo.png" alt="アド消ック天国 広告をひたすら消すシミュレーション">
+          <p>アド消ック天国 広告をひたすら消すシミュレーション</p></h1>
+        </header>
+        <h2>RANKING</h2>
+          <table class="ranking">
+              <thead class="ranking__titles">
+                <tr>
+                  <th class="rank">RANK</th><th class="name">NAME</th><th class="f_score">F_SCORE</th>
+                </tr>
+              </thead>
+              <tbody class="ranking__items">
+                <tr>
+                  <td class="rank">$no</td><td class="name">$name</td><td class="f_score">$f_score</td>
+                </tr>
+                <tr>
+                  <td class="rank">2</td><td class="name">$name</td><td class="f_score">99999</td>
+                </tr>
+                <tr>
+                  <td class="rank">$no</td><td class="name">$name</td><td class="f_score">$f_score</td>
+                </tr>
+                <tr>
+                  <td class="rank">$no</td><td class="name">$name</td><td class="f_score">$f_score</td>
+                </tr>
+                <tr>
+                  <td class="rank">$no</td><td class="name">$name</td><td class="f_score">$f_score</td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
+>>>>>>> 591cbe054a0b2401c54ee7b6511c7f3a3f86ab24
   </body>
 </html>
