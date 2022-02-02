@@ -2,6 +2,6 @@
 
 $servername = "localhost";
 $username = "root";
-$db = "adremover";
+$db = "adranking";
 $password = "";
 
