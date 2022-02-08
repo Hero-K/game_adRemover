@@ -106,7 +106,7 @@
             </div>
             
             <div class="result__menu">
-              <button id="back" type="button">トップへ戻る</button>
+              <button id="ranking-button" type="button"><a href="ranking.php">ランキング</a></button>
               <button id="retry-button" type="button">リトライ</button>
             </div>
           </div>

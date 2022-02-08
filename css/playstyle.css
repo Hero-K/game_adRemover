@@ -126,7 +126,7 @@ h2::after {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: space-around;
+  align-content: center;
   position: relative;
   /* margin: 30px; */
   text-align: center; /* javascのカウントダウンの */
@@ -385,6 +385,10 @@ h2::after {
 .result__menu button:hover {
   background: #444;
 }
+#ranking-button a {
+  color: #e1e1e1;
+  text-decoration: none;
+}
 #retry-button {
   color: #fdbc42;
 }
@@ -424,13 +428,16 @@ h2::after {
   font-size: 24px;
   margin: 36px auto;
 }
+#difficulity:hover {
+  cursor: pointer;
+}
 #difficulity option {
   color: #fff;
   background-color: #111;
 }
 
 .start__middle h2 {
-  animation: move 1s infinite;
+  animation: move 2s infinite;
 }
 @keyframes move {
   0% {
@@ -443,12 +450,13 @@ h2::after {
     opacity: 0.5;
   }
 }
-/*
-#start-wrapper {
+
+/* .parameter {
   animation: quake 0.6s;
 }
 @keyframes quake {
   0% {
+    filter: blur(10px);
     transform: translateX(10px);
   }
   25% {
@@ -463,4 +471,4 @@ h2::after {
   100% {
     transform: translateX(10px);
   }
-}*/
+} */

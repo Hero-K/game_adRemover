@@ -65,6 +65,8 @@ retryButton.addEventListener('click', retry); // リトライボタン
 /* パラメータ関係 
 *****************************************************************/
 const passageArea = document.querySelector('#passage-area');
+const MISS_MAX = 0; // ミス最大許容数
+let miss = 0; // ミス数初期化
 
 const difficulity = [400, 300, 100]; // 難易度別広告発生率
 let PassSec;    // 秒数カウント用変数
@@ -198,11 +200,16 @@ function objectready(popid) {
   gameover_a.innerHTML = '<h3>GAME OVER</h3><h4>画面をタップしてください</h4>'; // こっちの方がコードが少ない
 
   aimg.addEventListener('click', () => {
-    stopShowing();
-    document.querySelector('body').appendChild(gameover_a);
-    setTimeout( () => {
-      document.querySelector('#gameover-wrapper').addEventListener('click', gameover);
-    }, 1000);
+    miss++;
+    console.log(miss);
+    if (miss > MISS_MAX) {
+      stopShowing();
+
+      document.querySelector('body').appendChild(gameover_a);
+      setTimeout( () => {
+        document.querySelector('#gameover-wrapper').addEventListener('click', gameover);
+      }, 1000);
+    }
   });
 }
 
@@ -277,6 +284,7 @@ function retry() {
   
   // カウントダウン初期化
   count = 3;
+  miss = 0;
 
 
   resultWrapper.style.display = 'none'; // 結果画面の非表示

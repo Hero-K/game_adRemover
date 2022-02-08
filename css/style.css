@@ -59,7 +59,7 @@ h2 {
     background: linear-gradient(to left,#fff0,#fffe, #fff0);
   }
 .ranking {
-    margin: 0 auto;
+    margin: 0 auto 5rem;
     padding: 1rem;
     width: 100%;
     max-width: 640px;
