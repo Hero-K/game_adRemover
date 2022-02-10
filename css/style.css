@@ -6,21 +6,24 @@
 body {
     color: #fff;
     font-size: 100%; /* 1rem = 16px */
-    background-color: #333;
+    background-color: #000;
     font-family: 'M PLUS 1', sans-serif;
 }
 .wrapper {
     margin: 0 auto;
     width: 100%;
     max-width: 960px;
+    background-color: #333;
 }
 .header__logo {
     width: 100%;
     text-align: center;
 }
-.header__logo p {
+.header__logo a {
     font-size: 0.5rem;
     letter-spacing: 0.1rem;
+    color: #fff;
+    text-decoration: none;
 }
 .header__logo img {
     margin-top: 12px;

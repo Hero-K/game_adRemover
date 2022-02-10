@@ -22,7 +22,8 @@ const imageObject = [
     src: [
       './images/broom.jpg',
       './images/grano.jpg',
-      './images/colonaa.jpg'
+      './images/colonaa.jpg',
+      './images/supplement.png'
     ],
     alt: 'Object1',
   },
@@ -30,7 +31,8 @@ const imageObject = [
     src: [
       './images/colonaa.jpg',
       './images/jazzkitten.jpg',
-      './images/makura.gif'
+      './images/makura.gif',
+      './images/supplement.png'
     ],
     alt: 'Object2',
   },
@@ -52,6 +54,25 @@ const imageObject = [
   },
 ];
 
+const difficulity = [
+  {
+    freq: 400, // 広告発生率
+    lifeSet: 3, // ライフ(ミス許容回数)
+  },
+  {
+    freq: 300, 
+    lifeSet: 3,
+  },
+  {
+    freq: 100,
+    lifeSet: 3,
+  },
+  {
+    freq: 100,
+    lifeSet: 1,
+  },
+]; // 難易度別
+
 
 
 const startWrapper = document.querySelector('#start-wrapper');
@@ -60,26 +81,28 @@ startButton.addEventListener('click', countdown); // スタートボタン
 const retryButton = document.querySelector('#retry-button');
 retryButton.addEventListener('click', retry); // リトライボタン
 
+const difficulityForm = document.querySelector('#difficulity'); // 難易度変更欄
+difficulityForm.addEventListener('change', lifeReset);
 
+
+// lifeReset();
 
 /* パラメータ関係 
 *****************************************************************/
 const passageArea = document.querySelector('#passage-area');
-const MISS_MAX = 0; // ミス最大許容数
-let miss = 0; // ミス数初期化
-
-const difficulity = [400, 300, 100]; // 難易度別広告発生率
+const lifeArea = document.querySelector('#life-area');
 let PassSec;    // 秒数カウント用変数
 let PassageID;  // タイマー関数格納用
 let PassagePop; // オブジェクトの周期生成用
 let msg = 0;    // メッセージ(時間)
 let count = 3;  // (カウントダウン)
+let life = difficulity[difficulityForm.selectedIndex].lifeSet; // ライフ初期値
 
 // 繰り返し処理の開始
 function startShowing() {
   PassSec = 0;   // カウンタのリセット
   PassageID = setInterval('showPassage()',10); // タイマーをセット(10ms間隔)
-  PassagePop = setInterval('randobject()', difficulity[document.querySelector('#difficulity').selectedIndex]); // ランダム抽選 (難易度で抽選間隔が変わる)
+  PassagePop = setInterval('randobject()', difficulity[difficulityForm.selectedIndex].freq); // ランダム抽選 (難易度で抽選間隔が変わる)
 }
 // 繰り返し処理の中止
 function stopShowing() {
@@ -140,7 +163,7 @@ function randobject() {
 
 
 // 生成
-function objectready(popid) {  
+function objectready(popid) {
   const imageSrc = imageObject[popid].src[Math.floor(Math.random() * imageObject[popid].src.length)];
   const imageAlt = imageObject[popid].alt;
 
@@ -200,12 +223,15 @@ function objectready(popid) {
   gameover_a.innerHTML = '<h3>GAME OVER</h3><h4>画面をタップしてください</h4>'; // こっちの方がコードが少ない
 
   aimg.addEventListener('click', () => {
-    miss++;
-    console.log(miss);
-    if (miss > MISS_MAX) {
-      stopShowing();
+    life--;
+    damage(lifeArea.lastElementChild);
+    console.log(life);
+    
+    // life回数が許容値を上回ったら
+    if (life <= 0) {
+      stopShowing(); // タイマー停止
 
-      document.querySelector('body').appendChild(gameover_a);
+      document.querySelector('body').appendChild(gameover_a); // ゲームオーバー画面表示
       setTimeout( () => {
         document.querySelector('#gameover-wrapper').addEventListener('click', gameover);
       }, 1000);
@@ -218,6 +244,21 @@ function gameover() {
   result(); // リザルト画面召喚
   this.remove();
 }
+
+// ライフを減らす
+function damage(target) {
+  target.classList.add('fade_out');
+  setTimeout(()=>{target.remove()}, 500);
+}
+
+// ライフリセット
+function lifeReset() {
+  life = difficulity[difficulityForm.selectedIndex].lifeSet;
+  console.log(life);
+  const HEART = "<span>♥</span>";
+  lifeArea.innerHTML = HEART.repeat(life);
+}
+lifeReset();
 
 /* 終了後 
 *********************************************************************/
@@ -282,9 +323,8 @@ function retry() {
   msg = 0;
   passageArea.innerHTML = '0.00'; // msg入れると0になっちゃう
   
-  // カウントダウン初期化
-  count = 3;
-  miss = 0;
+  count = 3; // カウントダウン初期化
+  lifeReset(); // ライフ初期化
 
 
   resultWrapper.style.display = 'none'; // 結果画面の非表示

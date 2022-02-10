@@ -10,6 +10,15 @@
   }
 }
 
+@keyframes fadeOut {
+  0% {
+    opacity: 1; /* 透明 */
+  }
+  100% {
+    opacity: 0; /* 不透明 */
+  }
+}
+
 /* スライドダウン */
 @keyframes slideDown {
   0% {
@@ -32,6 +41,11 @@
     opacity: 1; /* 不透明 */
     transform: translateY(0px);
   }
+}
+
+/* fadeoutクラス */
+.fade_out {
+  animation: fadeOut 0.2s forwards;
 }
 
 /* ここからオブジェクト */

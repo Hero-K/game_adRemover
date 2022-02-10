@@ -32,6 +32,12 @@
           0
         </dd>
       </dl>
+      <dl>
+        <dt>LIFE:</dt>
+        <dd id="life-area">
+          ---
+        </dd>
+      </dl>
     </div>
       <!-- ここまでパラメータ -->
 
@@ -54,6 +60,7 @@
                     <option value="0">EASY</option>
                     <option value="1" selected>NORMAL</option>
                     <option value="2">HARD</option>
+                    <option value="3">I N S A N E</option>
                   </select>
                   <p class="start__description">
                     <!-- <img src="images/howto_img.png"> -->
@@ -106,7 +113,7 @@
             </div>
             
             <div class="result__menu">
-              <button id="ranking-button" type="button"><a href="ranking.php">ランキング</a></button>
+              <button id="ranking-button" type="button"><a href="ranking.php">ランキングへ</a></button>
               <button id="retry-button" type="button">リトライ</button>
             </div>
           </div>

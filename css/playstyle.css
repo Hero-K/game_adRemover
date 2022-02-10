@@ -66,13 +66,6 @@ h2::after {
   max-width: 960px;
   background-color: #333;
 }
-/* .parameter h1 {
-  margin-top: 5px;
-  width: 100%;
-  text-align: center;
-  font-size: 3rem;
-  font-family: cursive;
-} */
 .parameter dl {
   display: flex;
   flex-wrap: wrap;
@@ -89,6 +82,7 @@ h2::after {
   text-align: right;
   font-size: 5rem;
   font-weight: bold;
+  line-height: 1.25;
 }
 
 /* プレイ画面 */
@@ -126,7 +120,7 @@ h2::after {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: center;
+  align-content: space-around;
   position: relative;
   /* margin: 30px; */
   text-align: center; /* javascのカウントダウンの */
@@ -434,6 +428,10 @@ h2::after {
 #difficulity option {
   color: #fff;
   background-color: #111;
+}
+#difficulity option[value="3"],
+#difficulity[value="3"] {
+  color: #f33;
 }
 
 .start__middle h2 {

@@ -34,8 +34,10 @@ $rankers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="wrapper">
       <header class="header">
         <h1 class="header__logo">
-          <img src="images/logo.png" alt="" />
-          <p>広告をひたすら消すシミュレーション</p>
+          <a href="index.php">
+            <img src="images/logo.png" alt="アド消ック天国" />
+            <p>広告をひたすら消すシミュレーション</p>
+          </a>
         </h1>
       </header>
       <h2>RANKING</h2>
