@@ -5,7 +5,9 @@ $pdo = require_once 'connect.php';
 $nameame = $POST_['name'];
 if (!preg_match('/^[A-Za-z0-9]+$/', $nameame))
 {
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    echo "<script>
+             window.history.go(-1);
+     </script>";
 }else{
 $data = [
     ':rankerName' => $_POST['name'],
