@@ -211,7 +211,7 @@ function objectready(popid) {
     flags[ target.id ] = 'false'; // フラグを下げる(オブジェクト削除)
     
     // console.log(target.id + " → " + flags[ target.id ]); // デバッグ用ログ
-  
+    clickEffect(e, 'true');
     Score += 1000;
     scoreArea.innerHTML = Score;
   });
@@ -222,10 +222,11 @@ function objectready(popid) {
   gameover_a.id = 'gameover_wrapper';
   gameover_a.innerHTML = '<h3>GAME OVER</h3><h4>画面をタップしてください</h4>'; // こっちの方がコードが少ない
 
-  aimg.addEventListener('click', () => {
+  aimg.addEventListener('click', (e) => {
     life--;
     damage(lifeArea.lastElementChild);
-    console.log(life);
+    clickEffect(e, 'false');
+    // console.log(life);
     
     // life回数が許容値を上回ったら
     if (life <= 0) {
@@ -254,7 +255,7 @@ function damage(target) {
 // ライフリセット
 function lifeReset() {
   life = difficulity[difficulityForm.selectedIndex].lifeSet;
-  console.log(life);
+// console.log(life);
   const HEART = "<span>♥</span>";
   lifeArea.innerHTML = HEART.repeat(life);
 }
@@ -333,6 +334,33 @@ function retry() {
   document.querySelector('#start').style.display = 'flex';
 }
 
+
+
+/* クリックイベント 
+***************************************************************/
+const imageEffect = {
+  true: 'good.png',
+  false: 'ok.png',
+};
+
+function clickEffect(e, flag) {
+  const targetArea = e.target.getBoundingClientRect();
+  const x = targetArea.left+ e.offsetX;
+  const y = targetArea.top+ e.offsetY;
+  
+  const div = document.createElement('div');
+  div.classList.add('click_effect');
+  div.innerHTML = `<img src="images/${imageEffect[flag]}">`;
+
+  div.style.left = `${x - 20}px`;
+  div.style.top = `${y- 60}px`;
+
+  document.querySelector('body').appendChild(div);
+  setTimeout(()=>{div.remove()}, 1000);
+}
+
+/* 入力チェック 
+***************************************************************/
 function formCheck() {
   const nameForm = document.forms[0].name;
   const formAlert = document.querySelector('#form_alert');
