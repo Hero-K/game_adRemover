@@ -75,10 +75,10 @@ const difficulity = [
 
 
 
-const startWrapper = document.querySelector('#start-wrapper');
-const startButton = document.querySelector('#start-button');
+const startWrapper = document.querySelector('#start_wrapper');
+const startButton = document.querySelector('#start_button');
 startButton.addEventListener('click', countdown); // スタートボタン
-const retryButton = document.querySelector('#retry-button');
+const retryButton = document.querySelector('#retry_button');
 retryButton.addEventListener('click', retry); // リトライボタン
 
 const difficulityForm = document.querySelector('#difficulity'); // 難易度変更欄
@@ -89,8 +89,8 @@ difficulityForm.addEventListener('change', lifeReset);
 
 /* パラメータ関係 
 *****************************************************************/
-const passageArea = document.querySelector('#passage-area');
-const lifeArea = document.querySelector('#life-area');
+const passageArea = document.querySelector('#passage_area');
+const lifeArea = document.querySelector('#life_area');
 let PassSec;    // 秒数カウント用変数
 let PassageID;  // タイマー関数格納用
 let PassagePop; // オブジェクトの周期生成用
@@ -123,19 +123,19 @@ function countdown() {
 
     // カウントダウン要素生成
     const h2 = document.createElement('h3');
-    h2.setAttribute('id', 'countdown-wrapper');
+    h2.setAttribute('id', 'countdown_wrapper');
     h2.innerText = count;
 
     startWrapper.appendChild(h2);
   }
 
   // console.log(count);
-  document.querySelector('#countdown-wrapper').innerText = count--; // カウントダウン
+  document.querySelector('#countdown_wrapper').innerText = count--; // カウントダウン
   const id = setTimeout('countdown()', 1000);
   if (count < 0) // カウント０になったら
   {
     clearTimeout(id);
-    document.querySelector('#countdown-wrapper').remove();
+    document.querySelector('#countdown_wrapper').remove();
     startWrapper.style.display = 'none';  // スタート画面の非表示
     startShowing();
   }
@@ -144,7 +144,7 @@ function countdown() {
 
 /* シミュレーション本処理 
 ***************************************************************/
-const scoreArea = document.querySelector('#score-area');
+const scoreArea = document.querySelector('#score_area');
 let Score = 0;  // スコア
 
 // 周期生成
@@ -188,7 +188,7 @@ function objectready(popid) {
   switch(popid) {
     case 4:
       const div2 = document.createElement('div');
-      div2.className = 'object-wrapper';
+      div2.className = 'object_wrapper';
       simulator.appendChild(div2).appendChild(div).appendChild(aimg);// シミュレータにdivを追加
       simulator.appendChild(div2).appendChild(div).appendChild(btn);
       break;
@@ -203,7 +203,7 @@ function objectready(popid) {
     const target = e.target; // イベントそのもの.イベントを起こした要素;
     switch(popid) {
       case 4:
-        target.closest('.object-wrapper').remove();
+        target.closest('.object_wrapper').remove();
         break;
       default:
     }
@@ -211,7 +211,7 @@ function objectready(popid) {
     flags[ target.id ] = 'false'; // フラグを下げる(オブジェクト削除)
     
     // console.log(target.id + " → " + flags[ target.id ]); // デバッグ用ログ
-  
+    clickEffect(e, 'true');
     Score += 1000;
     scoreArea.innerHTML = Score;
   });
@@ -219,13 +219,14 @@ function objectready(popid) {
   // 失敗判定
   const gameover_a = document.createElement('a');
   gameover_a.href = '#';
-  gameover_a.id = 'gameover-wrapper';
+  gameover_a.id = 'gameover_wrapper';
   gameover_a.innerHTML = '<h3>GAME OVER</h3><h4>画面をタップしてください</h4>'; // こっちの方がコードが少ない
 
-  aimg.addEventListener('click', () => {
+  aimg.addEventListener('click', (e) => {
     life--;
     damage(lifeArea.lastElementChild);
-    console.log(life);
+    clickEffect(e, 'false');
+    // console.log(life);
     
     // life回数が許容値を上回ったら
     if (life <= 0) {
@@ -233,7 +234,7 @@ function objectready(popid) {
 
       document.querySelector('body').appendChild(gameover_a); // ゲームオーバー画面表示
       setTimeout( () => {
-        document.querySelector('#gameover-wrapper').addEventListener('click', gameover);
+        document.querySelector('#gameover_wrapper').addEventListener('click', gameover);
       }, 1000);
     }
   });
@@ -254,7 +255,7 @@ function damage(target) {
 // ライフリセット
 function lifeReset() {
   life = difficulity[difficulityForm.selectedIndex].lifeSet;
-  console.log(life);
+// console.log(life);
   const HEART = "<span>♥</span>";
   lifeArea.innerHTML = HEART.repeat(life);
 }
@@ -262,10 +263,10 @@ lifeReset();
 
 /* 終了後 
 *********************************************************************/
-const resultWrapper = document.querySelector('#result-wrapper');
-const scoreResult = document.querySelector('#score-result');
-const passSecResult = document.querySelector('#passsec-result');
-const finalResult = document.querySelector('#final-result');
+const resultWrapper = document.querySelector('#result_wrapper');
+const scoreResult = document.querySelector('#score_result');
+const passSecResult = document.querySelector('#passsec_result');
+const finalResult = document.querySelector('#final_result');
 
 // 記録
 function result() {
@@ -307,7 +308,7 @@ function retry() {
       // 前面広告オブジェクトの覆いを消す
       switch(i) {
         case 4:
-          document.querySelector('.object-wrapper').remove();
+          document.querySelector('.object_wrapper').remove();
           break;
         default:
       }
@@ -329,6 +330,44 @@ function retry() {
 
   resultWrapper.style.display = 'none'; // 結果画面の非表示
   startWrapper.style.display = 'flex'; // スタート画面の表示
-  document.querySelector('#start-wrapper').style.display = 'flex';
+  document.querySelector('#start_wrapper').style.display = 'flex';
   document.querySelector('#start').style.display = 'flex';
+}
+
+
+
+/* クリックイベント 
+***************************************************************/
+const imageEffect = {
+  true: 'good.png',
+  false: 'ok.png',
+};
+
+function clickEffect(e, flag) {
+  const targetArea = e.target.getBoundingClientRect();
+  const x = targetArea.left+ e.offsetX;
+  const y = targetArea.top+ e.offsetY;
+  
+  const div = document.createElement('div');
+  div.classList.add('click_effect');
+  div.innerHTML = `<img src="images/${imageEffect[flag]}">`;
+
+  div.style.left = `${x - 20}px`;
+  div.style.top = `${y- 60}px`;
+
+  document.querySelector('body').appendChild(div);
+  setTimeout(()=>{div.remove()}, 1000);
+}
+
+/* 入力チェック 
+***************************************************************/
+function formCheck() {
+  const nameForm = document.forms[0].name;
+  const formAlert = document.querySelector('#form_alert');
+  //入力チェック
+  if (!nameForm.value || !nameForm.value.match(/\S/g)) {
+    formAlert.innerText = '名前を入力してください';
+    return false;
+  } else {
+  }
 }

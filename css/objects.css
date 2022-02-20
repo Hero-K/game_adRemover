@@ -175,7 +175,7 @@
   background: #f33;
 }
 /* 背景で覆い隠すやつ */
-.object-wrapper {
+.object_wrapper {
   display: flex;
   background-color: #050505b3;
   position: fixed;
@@ -210,6 +210,27 @@
   border-radius: 15px;
 }
 
+/* クリックイベントのエフェクト */
+.click_effect {
+  position: absolute;
+  z-index: 10;
+  animation: clickEffect 0.1s ease-out forwards;
+}
+.click_effect img {
+  width: 3rem;
+  height: 3rem;
+}
+/* クリックエフェクト */
+@keyframes clickEffect {
+  0% {
+    opacity: 0.75;
+    transform: translateY(16px);
+  }  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* ゲームオーバーのシャッター */
 @keyframes poyoyon {
@@ -233,7 +254,7 @@
     opacity: 1;
   }
 }
-#gameover-wrapper {
+#gameover_wrapper {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -251,12 +272,12 @@
   font-weight: lighter;
   text-decoration: none;
 }
-#gameover-wrapper h3 {
+#gameover_wrapper h3 {
   width: 100%;
   font-size: 3rem;
     animation: poyoyon 0.6s cubic-bezier(0.12, 0, 0.39, 0) 1 forwards;
 }
-#gameover-wrapper h4 {
+#gameover_wrapper h4 {
   margin-top: 2rem;
   width: 100%;
   color: #e1e1e1;

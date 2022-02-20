@@ -1,6 +1,4 @@
-<?php
-// $pdo = require_once 'connect.php';
-?>
+<?php  ?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -22,19 +20,19 @@
       <!-- <h1>ひたすら広告を消す<br>シミュレーション</h1> -->
       <dl>
         <dt>TIME:</dt>
-        <dd id="passage-area">
+        <dd id="passage_area">
           0.00
         </dd>
       </dl>
       <dl>
         <dt>SCORE:</dt>
-        <dd id="score-area">
+        <dd id="score_area">
           0
         </dd>
       </dl>
       <dl>
         <dt>LIFE:</dt>
-        <dd id="life-area">
+        <dd id="life_area">
           ---
         </dd>
       </dl>
@@ -44,11 +42,11 @@
       <!-- ここからシミュレータ -->
         <div id="simulator">
           <!-- ここからスタート画面 -->
-          <div id="start-wrapper">
+          <div id="start_wrapper">
             <div id="start">
                 <h1 id="ready"><img src="images/logo.png" alt="アド消ック天国">
                   <p>広告をひたすら消すシミュレーション</p></h1>
-                <div class="start__middle">
+                <div class="start_middle">
                   <h2>GAME PLAY</h2>
                   <!-- <div id="object-sample">
                     <a>
@@ -62,13 +60,13 @@
                     <option value="2">HARD</option>
                     <option value="3">I N S A N E</option>
                   </select>
-                  <p class="start__description">
+                  <p class="start_description">
                     <!-- <img src="images/howto_img.png"> -->
                     しつこく出てくる広告を、出来るだけ素早く消せ!!
                   </p>
                 </div>
-                <div class="start-button-wrapper">
-                  <button type="button" id="start-button">スタート</button>
+                <div class="start_button_wrapper">
+                  <button type="button" id="start_button">スタート</button>
                   <!-- <button type="button" id="start-button"><a href="ranking.php">ランキング</a></button> -->
                 </div>
             </div>
@@ -83,38 +81,39 @@
           <h4>tatch screen</h4>
         </a> -->
 
-        <div id="result-wrapper">
+        <div id="result_wrapper">
           <div class="result">
             <h2>GAME OVER</h2>
             <div class="resultsheet">
-              <div class="result__column">
+              <div class="result_column">
                 <dl>
                   <dt>SCORE</dt>
-                  <dd id="score-result">0</dd>
+                  <dd id="score_result">0</dd>
                 </dl>
                 <span>/</span>
                 <dl>
                   <dt>TIME</dt>
-                  <dd id="passsec-result">0</dd>
+                  <dd id="passsec_result">0</dd>
                 </dl>
               </div>
-              <div class="result__column-final">
+              <div class="result_column_final">
                   <h3>FINAL SCORE</h3>
-                  <p id="final-result">0</p>
+                  <p id="final_result">0</p>
               </div>
             </div>
 
-            <div class="score-form-wrapper">
-              <form class="score-form" action="rank_in.php" method="post">
+            <div class="score_form_wrapper">
+              <form class="score_form" action="rank_in.php" method="post" onSubmit="return formCheck()">
                 <input  type="hidden" name="score" value="0">
-                <input id="form-name" type="text" name="name" placeholder="名前を付けてランキングに登録">
-                <button id="form-submit" type="submit"><img src="images/submit.svg" alt="送信"></button>
+                <input id="form_name" type="text" name="name" placeholder="名前を付けてランキングに登録">
+                <button id="form_submit" type="submit"><img src="images/submit.svg" alt="送信"></button>
               </form>
+              <p id="form_alert"></p>
             </div>
             
-            <div class="result__menu">
-              <button id="ranking-button" type="button"><a href="ranking.php">ランキングへ</a></button>
-              <button id="retry-button" type="button">リトライ</button>
+            <div class="result_menu">
+              <button id="ranking_button" type="button"><a href="ranking.php">ランキングへ</a></button>
+              <button id="retry_button" type="button">リトライ</button>
             </div>
           </div>
         </div>

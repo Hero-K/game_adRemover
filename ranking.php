@@ -33,7 +33,7 @@ $rankers = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <body>
     <div class="wrapper">
       <header class="header">
-        <h1 class="header__logo">
+        <h1 class="header_logo">
           <a href="index.php">
             <img src="images/logo.png" alt="アド消ック天国" />
             <p>広告をひたすら消すシミュレーション</p>
@@ -43,14 +43,14 @@ $rankers = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <h2>RANKING</h2>
 
       <table class="ranking">
-        <thead class="ranking__titles">
+        <thead class="ranking_titles">
           <tr>
             <th class="rank">RANK</th>
             <th class="name">NAME</th>
             <th class="f_score">F_SCORE</th>
           </tr>
         </thead>
-        <tbody class="ranking__items">
+        <tbody class="ranking_items">
           <?php 
           if ($rankers) {
             $i=1;

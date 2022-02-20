@@ -15,17 +15,17 @@ body {
     max-width: 960px;
     background-color: #333;
 }
-.header__logo {
+.header_logo {
     width: 100%;
     text-align: center;
 }
-.header__logo a {
+.header_logo a {
     font-size: 0.5rem;
     letter-spacing: 0.1rem;
     color: #fff;
     text-decoration: none;
 }
-.header__logo img {
+.header_logo img {
     margin-top: 12px;
     width: 80%;
     max-width: 180px;
@@ -76,19 +76,19 @@ h2 {
     font-size: 1.5rem;
     background-color: #444;
 }
-.ranking__titles tr {
+.ranking_titles tr {
     border-bottom: solid 2px #e1e1e1;
 }
-.ranking__items tr:nth-child(1) {
+.ranking_items tr:nth-child(1) {
     color: #e00;
 }
 
-.ranking__items tr {
+.ranking_items tr {
     padding: 0.5rem 0 0.5rem 0.5rem;
 }
-.ranking__items tr:nth-child(1),
-.ranking__items tr:nth-child(2),
-.ranking__items tr:nth-child(3) {
+.ranking_items tr:nth-child(1),
+.ranking_items tr:nth-child(2),
+.ranking_items tr:nth-child(3) {
     font-weight: bold;
 }
 

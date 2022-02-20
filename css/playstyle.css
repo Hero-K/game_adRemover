@@ -22,6 +22,7 @@ body {
   font-size: 100%; /* 1rem = 16px */
   background: #000;
   font-family: 'M PLUS 1', sans-serif;
+  overflow: hidden; /* クリックエフェクトがウィンドウを伸ばさないように */
 }
 
 h2 {
@@ -103,7 +104,7 @@ h2::after {
   <a>下部の謎の余白の対処法
 } */
 
-#start-wrapper {
+#start_wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,17 +147,17 @@ h2::after {
   font-size: 0.75rem;
   letter-spacing: 0.25rem;
 }
-.start__description {
+.start_description {
   padding: 0 1rem;
   width: 100%;
 }
-/* .start__description img {
+/* .start_description img {
   display: block;
   margin: 16px auto 24px;
   width: 100%;
   max-width: 360px;
 } */
-#object-sample {
+#object_sample {
   display: block;
   position: relative;
   top: 0;
@@ -169,10 +170,10 @@ h2::after {
   animation-duration: 1s;
   transition: ease-out 3s;
 }
-#object-sample img {
+#object_sample img {
   width: 100%;
 }
-#object-sample button {
+#object_sample button {
   display: inline-block;
   position: absolute;
   top: 0px;
@@ -184,22 +185,22 @@ h2::after {
   background: #f33;
   transition: .2s;
 }
-#object-sample button:hover {
+#object_sample button:hover {
   background: #f55;
 }
 
-#countdown-wrapper {
+#countdown_wrapper {
   font-size: 3.75rem;
   font-family: fantasy;
   animation: 1s countDown infinite;
 }
 /* スタートボタン */
-.start-button-wrapper {
+.start_button_wrapper {
   align-self: flex-start;
   width: 100%;
   text-align: center;
 }
-#start-button {
+#start_button {
   padding: 15px;
   width: 100%;
   max-width: 270px;
@@ -215,12 +216,12 @@ h2::after {
   /* padding: 15px;
   min-width: 270px; */
 }
-#start-button:hover {
+#start_button:hover {
   background-color: #444;
 }
 
 /* リザルト画面 */
-#result-wrapper {
+#result_wrapper {
   display: none;
   justify-content: center;
   align-items: center;
@@ -255,7 +256,7 @@ h2::after {
   font-family: 'Hind', sans-serif;
   line-height: 1.25;
 }
-.result__column {
+.result_column {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -274,16 +275,16 @@ h2::after {
   font-size: 3rem;
   font-weight: bold;
 }
-.result__column span {
+.result_column span {
   font-size: 2.5rem;
 }
-.result__column-final {
+.result_column_final {
   width: 100%;
   margin-top: 48px;
   text-align: center;
   /* white-space: nowrap; */
 }
-#final-result {
+#final_result {
   color: #fff;
   text-align: center;
   font-weight: bold;
@@ -291,7 +292,7 @@ h2::after {
   font-weight: bold;
   letter-spacing: 0.2rem;
 }
-#final-result::after {
+#final_result::after {
   content: " pt/sec";
   display: inline;
   font-size: 1.5rem;
@@ -316,17 +317,18 @@ h2::after {
   font-family: sans-serif;
 }
 
-.score-form-wrapper {
-  display: flex;
-  justify-content: center;
+.score_form_wrapper {
+  width: 72%;
+  margin: 0 auto;
 }
-.score-form {
+.score_form {
   display: flex;
   justify-content: center;
   gap: 4px;
-  width: 72%;
+  width: 100%;
+  margin: 0 auto;
 }
-#form-name {
+#form_name {
   padding: 0 8px;
   height: 2.5rem;
   background-color: #fff5;
@@ -338,7 +340,7 @@ h2::after {
 ::placeholder {
   color: #fffa;
 }
-#form-submit {
+#form_submit {
   display: inline-block;
   color: #fdbc42;
   height: 2.5rem;
@@ -347,21 +349,25 @@ h2::after {
   border-radius: 4px;
   transition: .2s;
 }
-#form-submit img {
+#form_submit img {
   height: 100%;
 }
-#form-submit:hover {
+#form_submit:hover {
   background: #222;
 }
+#form_alert {
+  margin: 0.5rem;
+  color: #f33;
+}
 
-.result__menu {
+.result_menu {
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: space-around;
   margin: 24px auto 0;
   padding: auto;
 }
-.result__menu button {
+.result_menu button {
   margin: 16px 2% 0;
   padding: 12px;
   width: 40%;
@@ -376,14 +382,14 @@ h2::after {
   transition: .3s;
   overflow: hidden;
 }
-.result__menu button:hover {
+.result_menu button:hover {
   background: #444;
 }
-#ranking-button a {
+#ranking_button a {
   color: #e1e1e1;
   text-decoration: none;
 }
-#retry-button {
+#retry_button {
   color: #fdbc42;
 }
 
@@ -393,7 +399,7 @@ h2::after {
   #start h2 {
     font-size: 2.5rem;
   }
-  #result-wrapper h2 {
+  #result_wrapper h2 {
     font-size: 3rem;
   }
   .resultsheet dt {
@@ -402,7 +408,7 @@ h2::after {
   .resultsheet dd {
     font-size: 2rem;
   }
-  #result-wrapper span {
+  #result_wrapper span {
     font-size: 2rem;
   }
 }
@@ -434,7 +440,7 @@ h2::after {
   color: #f33;
 }
 
-.start__middle h2 {
+.start_middle h2 {
   animation: move 2s infinite;
 }
 @keyframes move {
