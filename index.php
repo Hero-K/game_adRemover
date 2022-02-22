@@ -55,6 +55,10 @@
                     <button id="0" type="button" class="xbtn">×</button>
                   </div> -->
                   <select id="difficulity">
+                    <option value="0">エンドレスモード</option>
+                    <option value="1" selected>タイムアタックモード</option>
+                  </select><br>
+                  <select id="difficulity">
                     <option value="0">EASY</option>
                     <option value="1" selected>NORMAL</option>
                     <option value="2">HARD</option>
