@@ -54,7 +54,7 @@ const imageObject = [
   },
 ];
 
-const difficulity = [
+const difficulty = [
   {
     freq: 400, // 広告発生率
     lifeSet: 3, // ライフ(ミス許容回数)
@@ -81,8 +81,8 @@ startButton.addEventListener('click', countdown); // スタートボタン
 const retryButton = document.querySelector('#retry_button');
 retryButton.addEventListener('click', retry); // リトライボタン
 
-const difficulityForm = document.querySelector('#difficulity'); // 難易度変更欄
-difficulityForm.addEventListener('change', lifeReset);
+const difficultyForm = document.querySelector('#difficulty'); // 難易度変更欄
+difficultyForm.addEventListener('change', lifeReset);
 
 
 // lifeReset();
@@ -96,13 +96,13 @@ let PassageID;  // タイマー関数格納用
 let PassagePop; // オブジェクトの周期生成用
 let msg = 0;    // メッセージ(時間)
 let count = 3;  // (カウントダウン)
-let life = difficulity[difficulityForm.selectedIndex].lifeSet; // ライフ初期値
+let life = difficulty[difficultyForm.selectedIndex].lifeSet; // ライフ初期値
 
 // 繰り返し処理の開始
 function startShowing() {
   PassSec = 0;   // カウンタのリセット
   PassageID = setInterval('showPassage()',10); // タイマーをセット(10ms間隔)
-  PassagePop = setInterval('randobject()', difficulity[difficulityForm.selectedIndex].freq); // ランダム抽選 (難易度で抽選間隔が変わる)
+  PassagePop = setInterval('randobject()', difficulty[difficultyForm.selectedIndex].freq); // ランダム抽選 (難易度で抽選間隔が変わる)
 }
 // 繰り返し処理の中止
 function stopShowing() {
@@ -254,7 +254,7 @@ function damage(target) {
 
 // ライフリセット
 function lifeReset() {
-  life = difficulity[difficulityForm.selectedIndex].lifeSet;
+  life = difficulty[difficultyForm.selectedIndex].lifeSet;
 // console.log(life);
   const HEART = "<span>♥</span>";
   lifeArea.innerHTML = HEART.repeat(life);

@@ -418,7 +418,7 @@ h2::after {
   }
 }
 
-#difficulity {
+.selectbox {
   outline: none;
   color:  white;
   border: 2px solid white;
@@ -428,15 +428,15 @@ h2::after {
   font-size: 24px;
   margin: 36px auto;
 }
-#difficulity:hover {
+.selectbox:hover {
   cursor: pointer;
 }
-#difficulity option {
+.selectbox option {
   color: #fff;
   background-color: #111;
 }
-#difficulity option[value="3"],
-#difficulity[value="3"] {
+#difficulty.selectbox option[value="3"],
+#difficulty.selectbox[value="3"] {
   color: #f33;
 }
 
