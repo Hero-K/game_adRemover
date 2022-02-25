@@ -213,7 +213,7 @@
 /* クリックイベントのエフェクト */
 .click_effect {
   position: absolute;
-  z-index: 10;
+  z-index: 50;
   animation: clickEffect 0.15s ease-out forwards;
 }
 .click_effect img {
@@ -264,7 +264,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 5;
+  z-index: 98;
   height: 100%;
   width: 100%;
   justify-content: center; /*コンテナ内の個別アイテムの横方向の揃え位置を指定する*/
