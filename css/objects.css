@@ -214,10 +214,9 @@
 .click_effect {
   position: absolute;
   z-index: 10;
-  animation: clickEffect 0.1s ease-out forwards;
+  animation: clickEffect 0.15s ease-out forwards;
 }
 .click_effect img {
-  width: 3rem;
   height: 3rem;
 }
 /* クリックエフェクト */
@@ -225,7 +224,10 @@
   0% {
     opacity: 0.75;
     transform: translateY(16px);
-  }  
+  }
+  75% {
+    transform: translateY(-4px);
+  }
   100% {
     opacity: 1;
     transform: translateY(0);

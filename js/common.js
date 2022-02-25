@@ -339,8 +339,8 @@ function retry() {
 /* クリックイベント 
 ***************************************************************/
 const imageEffect = {
-  true: 'good.png',
-  false: 'ok.png',
+  true: 'good.svg',
+  false: 'miss.svg',
 };
 
 function clickEffect(e, flag) {
