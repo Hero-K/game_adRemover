@@ -215,9 +215,11 @@
   position: absolute;
   z-index: 50;
   animation: clickEffect 0.15s ease-out forwards;
+  pointer-events: none;
 }
 .click_effect img {
-  height: 3rem;
+  height: 2.5rem;
+  transform: translate(-50%, -100%);
 }
 /* クリックエフェクト */
 @keyframes clickEffect {

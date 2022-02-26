@@ -345,17 +345,18 @@ const imageEffect = {
 
 function clickEffect(e, flag) {
   const targetArea = e.target.getBoundingClientRect();
-  const x = targetArea.left+ e.offsetX;
-  const y = targetArea.top+ e.offsetY;
+  const simulatorArea = simulator.getBoundingClientRect();
+  const x = targetArea.left+ e.offsetX - simulatorArea.left;
+  const y = targetArea.top+ e.offsetY - simulatorArea.top - 8;
   
   const div = document.createElement('div');
   div.classList.add('click_effect');
   div.innerHTML = `<img src="images/${imageEffect[flag]}">`;
 
-  div.style.left = `${x - 20}px`;
-  div.style.top = `${y- 60}px`;
-
-  document.querySelector('body').appendChild(div);
+  div.style.left = `${x}px`;
+  div.style.top = `${y}px`;
+  
+  simulator.appendChild(div);
   setTimeout(()=>{div.remove()}, 1000);
 }
 

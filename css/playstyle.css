@@ -22,7 +22,6 @@ body {
   font-size: 100%; /* 1rem = 16px */
   background: #000;
   font-family: 'M PLUS 1', sans-serif;
-  overflow: hidden; /* クリックエフェクトがウィンドウを伸ばさないように */
 }
 
 h2 {
@@ -98,6 +97,7 @@ h2::after {
   width: 100%;
   max-width: 960px;
   text-align: center;
+  overflow: hidden; /* クリックエフェクトがウィンドウを伸ばさないように */
 }
 /* #simulator div {
   font-size: 0; 
